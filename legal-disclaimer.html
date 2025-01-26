@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- Author:    Ezra Fast -->
+<!-- Date:      October 29, 2024 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta name="description" content="The Legal Disclaimer Page"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>          <!-- this is the line that makes appearance depend on the width of the user's device --> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>             <!-- this line sets the encoding system for the page -->
+    <title>Legal Disclaimer</title>
+
+    <link rel="stylesheet" type="text/css" href="./css/sheet.css" />
+
+</head>
+
+
+<!-- loading a script on page load: https://www.geeksforgeeks.org/how-to-run-a-function-when-the-page-is-loaded-in-javascript/ -->
+<body onload="populateLeftMenu()">
+    <div id="container" name="container" class="container">
+
+        <!-- this is the title of the page and sub-heading -->
+        <div class="flexbox-2">
+            <div class="page-title" id="legal-disclaimer-title">
+                <h1>Legal Disclaimer</h1>
+            </div>
+
+            <!-- this is the div that contains the legal disclaimer paragraph -->
+            <div class="main-index">
+                <div id="legal-disclaimer-div">
+                    <p id="legal-disclaimer-paragraph">
+                        The author of this website bears no responsibility for the use of content presented in this website!
+                        Always make sure to follow the applicable laws and act ethically when practicing the craft of information security.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- this is the left menu -->
+
+        <div class="flexbox-1">
+            <div class="left-menu">
+                <h2 class="left-menu-title">Website.com</h2>
+                <p class="left-menu-title" id="left-menu-sub-heading">
+                    <strong>Technical Information Security</strong>
+                </p>
+
+                <table class="user-information-table" id="user-information-table">
+                    <tr>
+                        <td><p><strong>Your location: </strong></p></td>
+                        <td><p id="user-location"></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><strong>Browser type: </strong></p></td>
+                        <td><p id="user-browser"></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><strong>Your ISP: </strong></p></td>
+                        <td><p id="user-isp"></p></td>
+                    </tr>
+                  </table>
+
+                <div id="other-main-page-list">
+                    <ol type="i">
+                        <li><a href="./index.html">Home Page</a></li>
+                        <li><a href="./pentesting-phases.html">Pentesting by Phase</a></li>
+                        <li><a href="./information-gathering.html">Information Gathering</a></li>
+                        <li><a href="./vulnerability-discovery.html">Vulnerability Discovery</a></li>
+                        <li><a href="./initial-access.html">Initial Access</a></li>
+                        <li><a href="./privilege-escalation.html">Privilege Escalation</a></li>
+                        <li><a href="./post-exploitation.html">Post Exploitation</a></li>
+                        <li><a href="./pentesting-resources.html">Pentesting Resources</a></li>
+                        <li><a href="./glossary-definitions.html">Glossary &amp; Definitions</a></li>
+                        <li><a href="./code-snippets.html">Code Snippets</a></li>
+                        <li><a href="./log-processing.html">Log Processing</a></li>
+                        <li><a href="./breached-password-detector.html">Password Breach Checker</a></li>
+                    </ol>
+                </div>
+                <div id="legal-disclaimer">
+                    <a href="./legal-disclaimer.html">Legal Disclaimer</a>
+                </div>
+            </div>
+
+        </div>                  <!-- this is the end of the left-menu div -->
+
+    </div>              <!-- this is the end of the container div -->
+    <script src="scripts/left-menu.js"></script>
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/hide-left-menu.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,48 @@
+# this is a sample /var/log/auth.log file that can be pasted into the log processor to test its functionality.
+Dec 30 11:05:47 HOST gdm-fingerprint]: gkr-pam: no password is available for user
+Dec 30 11:05:47 HOST gdm-password]: pam_unix(gdm-password:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/tty1 ruser= rhost=  user=host
+Dec 30 11:05:54 HOST gdm-password]: gkr-pam: unable to locate daemon control file
+Dec 30 11:05:54 HOST gdm-password]: gkr-pam: stashed password to try later in open session
+Dec 30 11:05:54 HOST gdm-password]: pam_unix(gdm-password:session): session opened for user host(uid=1000) by (uid=0)
+Dec 30 11:05:54 HOST systemd-logind[1022]: New session 2 of user host.
+Dec 30 11:05:54 HOST systemd: pam_unix(systemd-user:session): session opened for user host(uid=1000) by (uid=0)
+Dec 30 11:05:54 HOST gdm-password]: gkr-pam: gnome-keyring-daemon started properly and unlocked keyring
+Dec 30 11:06:11 HOST polkitd(authority=local): Registered Authentication Agent for unix-session:2 (system bus name :1.118 [/usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1], object path /org/kde/PolicyKit1/AuthenticationAgent, locale en_CA.UTF-8)
+Dec 30 11:06:18 HOST polkitd(authority=local): Unregistered Authentication Agent for unix-session:c1 (system bus name :1.53, object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_CA.UTF-8) (disconnected from bus)
+Dec 30 11:06:18 HOST gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm
+Dec 30 11:06:18 HOST systemd-logind[1022]: Session c1 logged out. Waiting for processes to exit.
+Dec 30 11:06:18 HOST systemd-logind[1022]: Removed session c1.
+Dec 30 11:11:11 HOST PackageKit: uid 1000 is trying to obtain org.freedesktop.packagekit.system-sources-refresh auth (only_trusted:0)
+Dec 30 11:11:11 HOST PackageKit: uid 1000 obtained auth for org.freedesktop.packagekit.system-sources-refresh
+Dec 30 11:17:01 HOST CRON[8659]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Dec 30 11:17:01 HOST CRON[8659]: pam_unix(cron:session): session closed for user root
+Dec 30 11:28:44 HOST systemd-logind[1022]: Watching system buttons on /dev/input/event24 (Soundcore Life Q30 (AVRCP))
+Dec 30 11:30:01 HOST CRON[12193]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Dec 30 11:30:01 HOST CRON[12193]: pam_unix(cron:session): session closed for user root
+Dec 30 12:17:01 HOST CRON[26043]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Dec 30 12:17:01 HOST CRON[26043]: pam_unix(cron:session): session closed for user root
+Dec 30 12:30:01 HOST CRON[30832]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Dec 30 12:30:01 HOST CRON[30832]: pam_unix(cron:session): session closed for user root
+Dec 30 13:17:01 HOST CRON[49741]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Dec 30 13:17:01 HOST CRON[49741]: pam_unix(cron:session): session closed for user root
+Dec 30 13:30:01 HOST CRON[54738]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Dec 30 13:30:01 HOST CRON[54738]: pam_unix(cron:session): session closed for user root
+Dec 30 14:17:01 HOST CRON[70439]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Dec 30 14:17:01 HOST CRON[70439]: pam_unix(cron:session): session closed for user root
+Dec 30 14:18:22 HOST systemd-logind[1022]: Watching system buttons on /dev/input/event24 (Soundcore Life Q30 (AVRCP))
+Dec 30 14:30:01 HOST CRON[75015]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Dec 30 14:30:01 HOST CRON[75015]: pam_unix(cron:session): session closed for user root
+Dec 30 15:17:01 HOST CRON[92179]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Dec 30 15:17:01 HOST CRON[92179]: pam_unix(cron:session): session closed for user root
+Dec 30 15:30:01 HOST CRON[97045]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Dec 30 15:30:01 HOST CRON[97045]: pam_unix(cron:session): session closed for user root
+Dec 30 16:04:17 HOST systemd-logind[1022]: Watching system buttons on /dev/input/event24 (Soundcore Life Q30 (AVRCP))
+Dec 30 16:17:01 HOST CRON[114907]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Dec 30 16:17:01 HOST CRON[114907]: pam_unix(cron:session): session closed for user root
+Dec 30 16:30:01 HOST CRON[119515]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Dec 30 16:30:01 HOST CRON[119515]: pam_unix(cron:session): session closed for user root
+Dec 30 17:08:17 HOST su: (to root) host on pts/7
+Dec 30 17:08:17 HOST su: pam_unix(su:session): session opened for user root(uid=0) by (uid=1000)
+Dec 30 17:10:55 HOST su: pam_unix(su:session): session closed for user root
+Dec 30 17:11:49 HOST su: (to root) host on pts/7
+Dec 30 17:11:49 HOST su: pam_unix(su:session): session opened for user root(uid=0) by host(uid=1000)

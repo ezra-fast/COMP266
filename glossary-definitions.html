@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- Author:    Ezra Fast -->
+<!-- Date:      October 29, 2024 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta name="description" content="The Glossary and Definitions Page"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>          <!-- this is the line that makes appearance depend on the width of the user's device --> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>             <!-- this line sets the encoding system for the page -->
+    <title>Glossary & Definitions</title>
+
+    <link rel="stylesheet" type="text/css" href="./css/sheet.css" />
+
+</head>
+
+
+<!-- loading a script on page load: https://www.geeksforgeeks.org/how-to-run-a-function-when-the-page-is-loaded-in-javascript/ -->
+<body onload="populateLeftMenu()">
+    <div id="container" name="container" class="container">
+
+        <div class="flexbox-2">
+    <!-- this is the title of the page and sub-heading -->
+
+            <div class="page-title" id="glossary-definitions-title">
+                <h1>Glossary & Definitions</h1>
+            </div>
+
+    <!-- this is the main index of the page -->
+
+            <div class="main-index" id="extra-column-id">
+
+                <div id="term-definition-div-housing">
+                    <div id="term-1" class="term-definition-div">
+                        <h2><i>Reverse Shell</i></h2>
+                        <button class="definition-toggle">Show Definition</button>
+                        <p>
+                            A reverse shell is a network connection that is made from a compromised computer
+                            to an attacker that enables the attacker to issue shell commands to the compromised machine.
+                        </p>
+                    </div>
+                    <div id="term-2" class="term-definition-div">
+                        <h2><i>Port Scan</i></h2>
+                        <button class="definition-toggle">Show Definition</button>
+                        <p>
+                            A port scan is a series of TCP or UDP network connections to each port on a target machine
+                            that is performed to see which ports respond back saying they are open. A port being open then indicates
+                            that a particular service is running on the computer.
+                        </p>
+                    </div>
+                    <div id="term-3" class="term-definition-div">
+                        <h2><i>Network Tunnel</i></h2>
+                        <button class="definition-toggle">Show Definition</button>
+                        <p>
+                            A network tunnel is a static communication route that a particular network conversation travels through,
+                            enabling that conversation to take place. Examples of network tunnels range from VPN connections that connect
+                            corporate networks together over the internet to complex SOCKS routes that distribute traffic over fleets of servers.
+                        </p>
+                    </div>
+                    <div id="term-4" class="term-definition-div">
+                        <h2><i>Encryption</i></h2>
+                        <button class="definition-toggle">Show Definition</button>
+                        <p>
+                            Encryption is the process of scrambling data into ciphertext by passing it through an algorithm that
+                            mixes the original data with one or more secrets. This process produces ciphertext that is mathematically and 
+                            cryptographically secure from eavesdropping.
+                        </p>
+                    </div>
+                    <div id="term-5" class="term-definition-div">
+                        <h2><i>Linux</i></h2>
+                        <button class="definition-toggle">Show Definition</button>
+                        <p>
+                            Linux is an open-source operating system that inherits its design from the original UNIX system. Linux
+                            is an essential technology in information security because it allows both attackers and defenders to 
+                            exercise more complete control over computer systems, and offers a rich programming environment that is easy to learn.
+                        </p>
+                    </div>
+                    <div id="term-6" class="term-definition-div">
+                        <h2><i>Socket</i></h2>
+                        <button class="definition-toggle">Show Definition</button>
+                        <p>
+                            A socket is an IP address and port number pair that belongs to a computer application. Once allocated to the
+                            application, the socket becomes the address at which that application is reachable over a network. Sockets are important
+                            in information security because they are the fundamental base for all network communications.
+                        </p>
+                    </div>
+                    <div id="term-7" class="term-definition-div">
+                        <h2><i>Service</i></h2>
+                        <button class="definition-toggle">Show Definition</button>
+                        <p>
+                            In the context of information security, a service is a computer application that other computers can communicate with.
+                            This communication often occurs over a network, with one node (the client) providing input, and the other node (the server)
+                            providing output in response.
+                        </p>
+                    </div>
+                    <div id="term-8" class="term-definition-div">
+                        <h2><i>Vulnerability</i></h2>
+                        <button class="definition-toggle">Show Definition</button>
+                        <p>
+                            In the context of information security, a vulnerability is a bug (error) that has security implications.
+                            The implications of a given vulnerability can range from complete unauthenticated remote access to simply rendering 
+                            an application unusable.
+                        </p>
+                    </div>
+                    <div id="term-9" class="term-definition-div">
+                        <h2><i>Exploit</i></h2>
+                        <button class="definition-toggle">Show Definition</button>
+                        <p>
+                            In the context of information security, an exploit is any process that takes advantage of a vulnerability.
+                            With a vulnerability being a flaw with security implications, an exploit is a process that fully realizes those implications,
+                            often to the benefit of a malicious party.
+                        </p>
+                    </div>
+                    <div id="term-10" class="term-definition-div">
+                        <h2><i>Persistence</i></h2>
+                        <button class="definition-toggle">Show Definition</button>
+                        <p>
+                            In the context of information security, persistence refers to an attackers ability to continuously exercise control of a system 
+                            after they have initially gained access. Such control can include retaining the ability to login remotely, 
+                            run a piece of code, or otherwise re-engage with the machine at a later point.
+                        </p>
+                    </div>
+
+                </div>          <!-- this is the end of the term-definition-housing-div -->
+            </div>
+        </div>
+
+        <!-- this is the left menu -->
+
+        <div class="flexbox-1">
+            <div class="left-menu">
+                <h2 class="left-menu-title">Website.com</h2>
+                <p class="left-menu-title" id="left-menu-sub-heading">
+                    <strong>Technical Information Security</strong>
+                </p>
+
+                <table class="user-information-table" id="user-information-table">
+                    <tr>
+                        <td><p><strong>Your location: </strong></p></td>
+                        <td><p id="user-location"></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><strong>Browser type: </strong></p></td>
+                        <td><p id="user-browser"></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><strong>Your ISP: </strong></p></td>
+                        <td><p id="user-isp"></p></td>
+                    </tr>
+                  </table>
+
+                <div id="other-main-page-list">
+                    <ol type="i">
+                        <li><a href="./index.html">Home Page</a></li>
+                        <li><a href="./pentesting-phases.html">Pentesting by Phase</a></li>
+                        <li><a href="./information-gathering.html">Information Gathering</a></li>
+                        <li><a href="./vulnerability-discovery.html">Vulnerability Discovery</a></li>
+                        <li><a href="./initial-access.html">Initial Access</a></li>
+                        <li><a href="./privilege-escalation.html">Privilege Escalation</a></li>
+                        <li><a href="./post-exploitation.html">Post Exploitation</a></li>
+                        <li><a href="./pentesting-resources.html">Pentesting Resources</a></li>
+                        <li><a href="./glossary-definitions.html">Glossary &amp; Definitions</a></li>
+                        <li><a href="./code-snippets.html">Code Snippets</a></li>
+                        <li><a href="./log-processing.html">Log Processing</a></li>                 <!-- this was added during Unit 5 programming -->
+                        <li><a href="./breached-password-detector.html">Password Breach Checker</a></li>
+                    </ol>
+                </div>
+                <div id="legal-disclaimer">
+                    <a href="./legal-disclaimer.html">Legal Disclaimer</a>
+                </div>
+            </div>
+
+        </div>                  <!-- this is the end of the left-menu div -->
+
+    </div>              <!-- this is the end of the container div -->
+    <script src="scripts/left-menu.js"></script>
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/hide-left-menu.js"></script>
+    <script src="scripts/glossary-dropdowns.js"></script>
+</body>
+</html>
+

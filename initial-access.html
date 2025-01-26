@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- Author:    Ezra Fast -->
+<!-- Date:      October 29, 2024 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta name="description" content="This is the initial access page"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>          <!-- this is the line that makes appearance depend on the width of the user's device --> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>             <!-- this line sets the encoding system for the page -->
+    <title>Initial Access</title>
+
+    <link rel="stylesheet" type="text/css" href="./css/sheet.css" />
+
+</head>
+
+
+<!-- loading a script on page load: https://www.geeksforgeeks.org/how-to-run-a-function-when-the-page-is-loaded-in-javascript/ -->
+<body onload="populateLeftMenu()">
+    <div id="container" name="container" class="container">
+
+        <div class="flexbox-2">
+
+    <!-- this is the title of the page and sub-heading -->
+
+            <div class="page-title" id="phase-name-title">
+                <h1>Initial Access</h1>
+            </div>
+
+            <div class="main-index" id="extra-column-id">
+                <div class="phase-styling">
+
+                    <div class="dropdown-sub-topic-menu">
+                        <button onclick="dropDownMenu()" class="sub-topic-menu-dropper">Jump to a Topic</button>
+                        <div id="sub-topic-list" class="sub-topic-list">
+                            <ul>
+                                <li><a href="#sub-topic-1">Launching an exploit</a></li>
+                                <li><a href="#sub-topic-2">Using stolen credentials</a></li>
+                                <li><a href="#sub-topic-3">Establishing remote shell access</a></li>
+                                <li><a href="#sub-topic-4">Establishing remote graphical access</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+            <!-- this is the div containing all of the individual sub-topic divs -->
+
+                    <div id="sub-topic-div-housing">
+                        <div id="sub-topic-1" class="sub-topic-div">
+                            <h2>Launching an exploit</h2>
+                            <p>Using Msf6 to launch a public exploit against port 21</p>
+                            <pre>
+                                <code>
+msf6 > search [target-service] > use X > set rhost [target] > run
+                                </code>
+                            </pre>
+                            <img src="./images/running-exploit.png" alt="Alt: Launching eternalblue from msf6"/>
+                        </div>
+                        <div id="sub-topic-2" class="sub-topic-div">
+                            <h2>Using stolen credentials</h2>
+                            <p>Using Crackmapexec to access a remote file share over SMB</p>
+                            <pre>
+                                <code>
+crackmapexec smb 192.168.0.200 -u test -p "pass"
+                                </code>
+                            </pre>
+                            <img src="./images/smb-auth.png" alt="Alt: Authenticating to a file share with Crackmapexec"/>
+                        </div>
+                        <div id="sub-topic-3" class="sub-topic-div">
+                            <h2>Establishing remote shell access</h2>
+                            <p>Using netcat to catch a reverse shell and establish remote access.</p>
+                            <pre>
+                                <code>
+nc -nvlp 443 && python3 -c 'import pty; pty.spawn("/bin/bash");'                                    
+                                </code>
+                            </pre>
+                            <img src="./images/remote-access.png" alt="Alt: Establishing remote shell access with netcat"/>
+                        </div>
+                        <div id="sub-topic-4" class="sub-topic-div">
+                            <h2>Establishing remote graphical access</h2>
+                            <p>Using xfreerdp client to connect to a Windows target</p>
+                            <pre>
+                                <code>
+xfreerdp /v:192.168.0.54 /u:USER /p:"password"
+                                </code>
+                            </pre>
+                            <img src="./images/rdp-connection.png" alt="Alt: Establishing remote graphical access over RDP"/>
+                        </div>
+
+                    </div>          <!-- this is the end of the sub-topic housing div -->
+                </div>
+            </div>
+        </div>
+
+        <!-- this is the left menu -->
+
+        <div class="flexbox-1">
+            <div class="left-menu">
+                <h2 class="left-menu-title">Website.com</h2>
+                <p class="left-menu-title" id="left-menu-sub-heading">
+                    <strong>Technical Information Security</strong>
+                </p>
+
+                <table class="user-information-table" id="user-information-table">
+                    <tr>
+                        <td><p><strong>Your location: </strong></p></td>
+                        <td><p id="user-location"></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><strong>Browser type: </strong></p></td>
+                        <td><p id="user-browser"></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><strong>Your ISP: </strong></p></td>
+                        <td><p id="user-isp"></p></td>
+                    </tr>
+                  </table>
+
+                <div id="other-main-page-list">
+                    <ol type="i">
+                        <li><a href="./index.html">Home Page</a></li>
+                        <li><a href="./pentesting-phases.html">Pentesting by Phase</a></li>
+                        <li><a href="./information-gathering.html">Information Gathering</a></li>
+                        <li><a href="./vulnerability-discovery.html">Vulnerability Discovery</a></li>
+                        <li><a href="./initial-access.html">Initial Access</a></li>
+                        <li><a href="./privilege-escalation.html">Privilege Escalation</a></li>
+                        <li><a href="./post-exploitation.html">Post Exploitation</a></li>
+                        <li><a href="./pentesting-resources.html">Pentesting Resources</a></li>
+                        <li><a href="./glossary-definitions.html">Glossary &amp; Definitions</a></li>
+                        <li><a href="./code-snippets.html">Code Snippets</a></li>
+                        <li><a href="./log-processing.html">Log Processing</a></li>
+                        <li><a href="./breached-password-detector.html">Password Breach Checker</a></li>
+                    </ol>
+                </div>
+                <div id="legal-disclaimer">
+                    <a href="./legal-disclaimer.html">Legal Disclaimer</a>
+                </div>
+            </div>
+
+        </div>                  <!-- this is the end of the left-menu div -->
+
+    </div>              <!-- this is the end of the container div -->
+    <script src="scripts/menus.js"></script>
+    <script src="scripts/left-menu.js"></script>
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/hide-left-menu.js"></script>
+</body>
+</html>
+

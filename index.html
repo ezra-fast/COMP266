@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- Author:    Ezra Fast -->
+<!-- Date:      October 29, 2024 -->
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta name="description" content="The Main Landing Page"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>          <!-- this is the line that makes appearance depend on the width of the user's device --> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>             <!-- setting the encoding -->
+    <title>Website</title>
+
+    <link rel="stylesheet" type="text/css" href="./css/sheet.css" />
+
+</head>
+
+<!-- loading a script on page load: https://www.geeksforgeeks.org/how-to-run-a-function-when-the-page-is-loaded-in-javascript/ -->
+<body onload="populateLeftMenu()">
+    <div id="container" name="container" class="container">
+
+        <div class="flexbox-2">
+
+            <div class="page-title">
+                <h1><span>Title of Website</span></h1>
+                <h3 id="index-title">
+                    Technical Information Security
+                </h3>
+            </div>
+
+    <!-- each subsequent <div> item is identified by class instead of id so that they can be styled together --> 
+
+            <div class="main-index" id="extra-column-id">
+                <div>
+                    <h2 class="index-item-title"><a href="./pentesting-phases.html">Penetration Testing by Phase</a></h2>
+                    <button type="button" class="phase-dropdown">Show Phases</button>
+                    <ol type="i" class="main-index-item" id="phase-list">                   <!-- "i" is for lowercase roman numerals -->
+                        <li><a href="./information-gathering.html">information gathering</a></li>
+                        <li><a href="./vulnerability-discovery.html">vulnerability discovery</a></li>
+                        <li><a href="./initial-access.html">initial access</a></li>
+                        <li><a href="./privilege-escalation.html">privilege escalation</a></li>
+                        <li><a href="./post-exploitation.html">post exploitation</a></li>
+                    </ol>
+                </div>
+                <div>
+                    <h2 class="index-item-title"><a href="./pentesting-resources.html">Penetration Testing Resources</a></h2>
+                    <p class="main-index-item">Resources related to the 5 stages of penetration tests and other technical subject matter relating to security audits.</p>
+                </div>
+                <div>
+                    <h2 class="index-item-title"><a href="./glossary-definitions.html">Glossary and Definitions</a></h2>
+                    <p class="main-index-item">Definitions for common IT security terminology and topics referenced throughout the site.</p>
+                </div>
+                <div>
+                    <h2 class="index-item-title"><a href="./code-snippets.html">Code Snippets</a></h2>
+                    <p class="main-index-item">Examples of how techniques from each phase can be integrated into offensive applications.</p>
+                </div>
+                <div>
+                    <h2 class="index-item-title"><a href="./log-processing.html">Log Processor</a></h2>
+                    <p class="main-index-item">Using regular expressions to detect security events in log files.</p>
+                </div>
+                <div>
+                    <h2 class="index-item-title"><a href="./breached-password-detector.html">Password Breach Checker</a></h2>
+                    <p class="main-index-item">Using the HaveIBeenPwned API v3 to check if a password has been involved in a data breach.</p>
+                </div>
+            </div>
+        </div>
+
+    <!-- this is the left menu -->
+
+        <div class="flexbox-1">
+            <div class="left-menu">
+                <h2 class="left-menu-title">Website.com</h2>
+                <p class="left-menu-title" id="left-menu-sub-heading">
+                    <strong>Technical Information Security</strong>
+                </p>
+
+                 <table class="user-information-table" id="user-information-table">
+                    <tr>
+                        <td><p><strong>Your location: </strong></p></td>
+                        <td><p id="user-location"></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><strong>Browser type: </strong></p></td>
+                        <td><p id="user-browser"></p></td>
+                    </tr>
+                    <tr>
+                        <td><p><strong>Your ISP: </strong></p></td>
+                        <td><p id="user-isp"></p></td>
+                    </tr>
+                  </table>               
+
+                <div id="other-main-page-list">
+                    <ol type="i">
+                        <li><a href="./index.html">Home Page</a></li>
+                        <li><a href="./pentesting-phases.html">Pentesting by Phase</a></li>
+                        <li><a href="./information-gathering.html">Information Gathering</a></li>
+                        <li><a href="./vulnerability-discovery.html">Vulnerability Discovery</a></li>
+                        <li><a href="./initial-access.html">Initial Access</a></li>
+                        <li><a href="./privilege-escalation.html">Privilege Escalation</a></li>
+                        <li><a href="./post-exploitation.html">Post Exploitation</a></li>
+                        <li><a href="./pentesting-resources.html">Pentesting Resources</a></li>
+                        <li><a href="./glossary-definitions.html">Glossary &amp; Definitions</a></li>
+                        <li><a href="./code-snippets.html">Code Snippets</a></li>
+                        <li><a href="./log-processing.html">Log Processing</a></li>
+                        <li><a href="./breached-password-detector.html">Password Breach Checker</a></li>                 <!-- this was added during Unit 7 -->
+                    </ol>
+                </div>
+                <div id="legal-disclaimer">
+                    <a href="./legal-disclaimer.html">Legal Disclaimer</a>
+                </div>
+            </div>
+
+        </div>                  <!-- this is the end of the left-menu div -->
+
+
+    </div>              <!-- This is closing the container div --> 
+    <script src="scripts/left-menu.js"></script>
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/hide-left-menu.js"></script>
+    <script src="scripts/phase-dropdown.js"></script>
+</body>
+</html>

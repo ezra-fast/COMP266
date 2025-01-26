@@ -1,0 +1,688 @@
+/* 
+Author: Ezra Fast
+Date: November 19th, 2024
+Description: My first attempt at CSS; this file was 500+ lines before i took a step back, refactored the HTML to be more uniform across pages,
+             and took a more structured approach. The process of writing HTML and CSS will be markedly easier the second time around...
+*/
+
+/* The body of every page is part of the same container class */
+
+/* import based on: https://fonts.google.com/selection/embed */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* GLOBALS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing : border-box;                    /* including padding within element size specifications */
+}
+
+html, body {
+    height : 100%;
+    margin : 0;                                 /* figuring this one out for the first time was a nightmare... */
+    padding : 0;
+    background-color : #15141C;
+    color : #E4E3ED;
+    font-family : "Inter", sans-serif;           /* this is the default font from figma; since figma was used for the wireframes, i have adopted its look */
+    font-size : 16px;
+}
+
+a {
+    color : #E4E3ED;
+    /* text-decoration : none;                     /* use this to remove the underline */
+}
+
+img {
+    width : 80%;
+    height : auto;
+}
+
+/* General logic for the flexbox approach:
+    - the page itself will have 2 boxes organized horizontally: 1. the left menu; 2. the title and the content
+    - both the title and the content area will be their own flexboxes, organized as a column
+*/
+
+/* FLEXBOX FORMATTING           -->     the use of flexboxes is based on some serious refactoring of the HTML; this was definitely a learning experience */
+
+.container {
+    display : flex;
+    justify-content : space-evenly;
+    flex-wrap : wrap;
+}
+
+.flexbox-1 {                                    /* this holds the left menu; in the JS unit, JS will be used to dynamically hide the menu upon overflow */
+    display : flex;
+}
+
+.flexbox-2 {
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
+    flex-grow : 1;                              /* this solves alignment problems by working to allot each child its own space*/
+}
+
+/* PAGE TITLES FOR ALL PAGES*/
+
+/* 
+the alignment of the title is based on:
+    - https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox
+
+the padding is based on:
+    - https://www.hostinger.com/tutorials/padding-vs-margin
+*/
+.page-title {                           /* styling for all pages other than the index (landing) page */
+    padding-top : 30px;                 /* space between the content and element border */
+    margin-top : 20px;                  /* space between the border and the next element */
+    margin-bottom : 40px;
+    display : flex;
+    flex-direction : column;    
+    align-items : center;               /* this line seems to remove the need for  -->  justify-content: center; */
+    text-align : center;
+    font-size : 1.6rem;
+    color : #8380DC;
+}
+
+/* for the sub-heading on breached-password-detector.html */
+.page-title p {
+    font-style : italic;
+    color : #383680;
+}
+
+#index-title {                         /* this overrides the immediately previous block to style the title-itself with a larger font */
+    font-size : 1.5rem;
+    color : #3D39BF;
+    font-weight : 300;                  /* in all the other sections that styled the title this line didn't make a difference */
+    margin-top : 5px;
+}
+
+/* THE LEFT MENU FOR ALL PAGES          the index page's left menu will have to be modified separately*/
+
+/* hiding the scrollbar but maintaining the functionality was done based on: https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp */
+.left-menu {
+    width : 100%;
+    max-width : 400px;
+    padding : 20px;
+    background-color : #1B2156;
+    border-radius : 50px;
+    position : fixed;
+    left : 40px;
+    top : 40px;
+    bottom : 40px;
+    right : 40px;
+    /* making sure the left menu stays above potentially overlapping content according to: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index 
+       this is done by giving it the highest value */
+    z-index : 1000;                     /* just in case there is content overlap between the major flexboxes */
+    overflow : auto;                    /* hide the overflow when it actually overflows */
+    -ms-overflow-style : none;
+    scrollbar-width : none;
+}
+
+/* this hides the default scrollbar in webkit based browsers */
+.left-menu::-webkit-scrollbar {
+    display: none;
+}
+
+.left-menu-title {
+    margin-top : 10px;
+    margin-bottom : 10px;
+    text-align : center;
+    width : 100%;
+    font-size : 2.5rem;
+    color : #3B43B3;
+    font-weight : 400;
+}
+
+#left-menu-sub-heading {
+    font-size : 1rem;
+    font-weight : 300;
+    color : #8380DC;
+}
+
+/* formatting for the list of other pages in the left menu*/
+
+#other-main-page-list {
+    margin-top : 5px;
+    display : flex;
+    justify-content : left;
+    padding : 5px;
+}
+
+#other-main-page-list ol {
+    list-style-type : none;
+    display : flex;
+    flex-direction : column;
+    gap : 20px;
+}
+
+#other-main-page-list a {
+    color : #8380DC;
+    font-size : 1rem;         /* this is the font size for the left menu links */
+    color : #3B97B3;
+}
+
+#legal-disclaimer {
+    margin-top : 15px;
+    margin-bottom : 15px;
+    text-align : center;
+}
+
+/* MAIN INDEX ON EACH PAGE*/
+
+.main-index {
+    display : flex;
+    /* flex-direction : column; */          /* the genius behind flexboxes did not account for children and parents both being declared column wise... */
+    justify-content : center;
+    padding : 20px;
+    line-height : 2.5;
+}
+
+#extra-column-id {
+    flex-direction : column;
+}
+
+.phase-styling {                            /* this applies to each of the phase pages */
+    text-align : left;                      /* this is the justification that applies to the main content of pages */
+    max-width : 700px;
+}
+
+.sub-topic-div img {
+    width : 800px;
+    height : auto;
+    margin-bottom : 50px;
+}
+
+.main-index-item {
+    font-style : italic;                    /* this applies to both <p> and <ol> tags so easier to do it here than individually in the HTML */
+}
+
+.index-item-title a {                       /* overriding the default colouring for anchor tags specifed above */
+    color : #8380DC;
+}
+
+.pentesting-phase-div a {
+    color : #8380DC;
+}
+
+.pentesting-phase-description {
+    font-style : italic;
+}
+
+/* per-page styling particularities*/
+
+.main-index-item li {                       /* making list items appear closer together */
+    line-height : 1.5;
+}
+
+#legal-disclaimer-paragraph {
+    max-width : 700px;                      /* making sure that the legal disclaimer does not appear as a single mega line of text */
+}
+
+.code-snippet-div h2, 
+.code-snippet-div p {
+    text-align : left;
+}
+
+.code-snippet-div p {
+    margin-bottom : 15px;
+}
+
+#code-snippet-div-housing {
+    max-width : 800px;
+}
+
+/* drop-down menus on different pages */
+
+#dynamic-link-menu {                        /* this and the next are for the resources page */
+    padding : 20px;
+    margin-top : 50px;
+}
+
+.resource-div {
+    padding : 20px;
+    margin-top : 20px;
+}
+
+.resource-link {
+    font-size : 1.5rem;
+    color : #8380DC;
+    font-weight : bold;
+}
+
+/* styling for the drop down menu div */
+.dropdown-sub-topic-menu {
+    position : relative;
+    display : inline-block;     /* behave like an inline element */
+    margin-bottom : 50px;
+}
+
+.sub-topic-list {
+    display : none;                 /* hiding the menu by default */
+    position : absolute;
+    background-color : #938aab;
+    z-index : 10;                    /* rest atop everything else */
+    width : 295%;
+    text-align : left;
+    /* left : -25%;                    /* 150 - 25 = 125 (same overflow on right as compensation on left) */
+    /* border-radius : 15px; */
+}
+
+.sub-topic-list li {
+    list-style-type : none;         /* getting rid of the default list item markers */
+}
+
+.sub-topic-list a {
+    color : #FFFFFF;
+    text-decoration : none;
+    display : block;
+    padding-left : 10px;
+}
+
+.sub-topic-list a:hover {
+    background-color : #363661;
+}
+
+.show-menu {
+    display : block;
+}
+
+/* Button specific styling */
+.sub-topic-menu-dropper {
+    background-color : #6F6BC8;
+    color : #000000;
+    padding : 10px;
+    font-size : 1rem;
+    border : none;
+    cursor : pointer;
+    transition-duration : 0.2s;
+}
+
+
+.sub-topic-menu-dropper:hover, #sub-topic-menu-dropper:focus {
+    background-color : #8380DC
+}
+
+/* the button, input box, and dynamic output on the log-processing page */
+
+.user-input-div {
+    text-align : center;                    /* input box should not move when results are displayed */
+    max-width : 900px;
+}
+
+.user-input-div textarea {
+    background-color : #A9A9A9;
+    outline : none;
+    border : none;
+}
+
+.process-log-button, .process-log-button button {
+    text-align : center;
+}
+
+/* styling for this element is largely based on: https://www.w3schools.com/css/css3_buttons.asp */
+.process-log-button button {                    /* this was a painstaking styling process */
+    background-color : #8380DC;
+    border : none;
+    border-radius : 4px;
+    font-size : 1rem;
+    padding: 0.4rem;
+    margin-top : 20px;
+    transition-duration : 0.2s;
+}
+
+#process-user-log {
+    cursor : pointer;
+}
+
+#process-user-log:hover {
+    background-color : #5d5a9c;
+}
+
+#display-processing-results {               /* this is the output paragraph that will contain the results of the log processor */
+    display : block;
+    margin-top : 50px;
+    text-align : left;
+    height : 300px;
+    width : 700px;
+}
+
+#processing-results {
+    text-align : left;
+    max-width : 900px;                  /* found through trial and error */
+}
+
+/* THIS IS THE STYLING FOR THE PASSWORD BREACH CHECKER PAGE (breached-password-detector.html) */
+
+.password-breach-div {
+    text-align : left;
+}
+
+.check-password-button button {                    /* this was a painstaking styling process */
+    background-color : #8380DC;
+    border : none;
+    border-radius : 4px;
+    font-size : 1rem;
+    padding: 0.4rem;
+    margin-top : 20px;
+    transition-duration : 0.2s;
+}
+
+#check-user-password {
+    cursor : pointer;
+}
+
+#check-user-password:hover {
+    background-color : #5d5a9c;
+}
+
+.display-call-results {
+    margin-top : 20px;
+    height : 500px;             /* height and weight are manually declared so that output-writes don't resize the div inadvertently */
+    width : 500px;
+}
+
+/* THIS IS THE STYLING FOR THE LOCATION AND BROWSER DATA IN THE LEFT MENU */
+
+/* syntax found on: https://www.w3schools.com/html/html_table_borders.asp */
+.user-information-table {
+    margin-top : 15px;
+    margin-bottom : 15px;
+}
+.user-information-table tr,
+.user-information-table td {
+    margin-bottom : 10px;
+    border: 2px solid black;                /* not sure why #000000 doesn't work instead of "solid black" */
+    border-radius: 10px;
+    padding : 0.9rem;   
+}
+
+.user-information-table strong {
+    color : #8380DC;
+}
+
+/* THIS IS THE STYLING FOR THE RESOURCE PAGE SEARCH BAR */
+
+.resource-search {
+    text-align : center;
+}
+
+.search-results {
+    text-align : center;
+}
+
+/* Styling heavily based on: https://www.w3schools.com/howto/howto_css_searchbar.asp */
+.resource-search input[type=text] {
+    float: center;
+    padding: 10px;
+    border: none;
+    font-size: 1rem;
+}
+
+.search-results {                   /* results are displayed simply, without excessive styling */
+    margin-top : 20px;
+    font-size : 1.2rem;
+}
+
+/* STYLING FOR THE COPY CODE BUTTONS ON code-snippets.html */
+
+.copy-code {
+    opacity : 0;                        /* this approach is much more visually appealing compared to 'visibility : hidden ' */
+    border-radius : 10px;
+    border : none;
+    color : #bea6ed;
+    background-color : #222768;
+    text-align : center;
+    cursor : pointer;
+    padding : 10px;
+    font-size : 15px;
+    font-weight : bold;
+    transition-duration: 0.1s;                  /* the speed with which the color changes on hover */
+}
+
+.copy-code:hover {
+    background-color : #41446e;
+}
+
+.copy-code.shown {
+    opacity : 1;
+    visibility : visible;
+}
+
+/* THIS IS THE STYLING FOR THE CODE BLOCK PREVIEW FUNCTIONALITY */
+
+.code-preview {
+    max-height : 50px;
+    overflow : hidden;
+    opacity : 0;
+}
+
+.code-preview.shown {
+    max-height : none;
+    visibility : visible;
+    opacity : 1;
+}
+
+.view-code {
+    border-radius : 10px;
+    border : none;
+    color : #bea6ed;
+    background-color : #222768;
+    text-align : center;
+    padding : 10px;
+    cursor : pointer;
+    font-size : 15px;
+    font-weight : bold;
+    transition-duration: 0.1s;
+}
+
+.view-code:hover {
+    background-color : #41446e;
+}
+
+.code-snippet-div img {
+    text-align : center;
+    width : 650px;
+    height : auto;
+    margin-bottom : 25px;
+}
+
+/* THIS IS THE STYLING FOR THE GLOSSARY DEFINITION TOGGLES */
+
+.definition-toggle {
+    border-radius : 10px;
+    border : none;
+    color : #110e17;
+    background-color : #8380DC;
+    text-align : center;
+    padding : 9px;
+    font-size : 14px;
+    cursor : pointer;
+    font-weight : bold;
+    transition-duration: 0.1s;
+}
+
+.definition-toggle:hover {
+    background-color : #3B43B3;
+}
+
+.term-definition-div p {
+    max-height : 1rem;
+    visibility : hidden;
+    margin-top : 20px;
+    margin-bottom : 30px;
+}
+
+.term-definition-div p.shown {
+    max-height : none;
+    visibility : visible;
+}
+
+#term-definition-div-housing {
+    max-width : 700px;                  /* This is necessary so that definition blocks don't extend the entire width of the screen */
+}
+
+/* THIS IS STYLING FOR THE DROPDOWN MENU ON index.html */
+
+.phase-dropdown {
+    color : #E4E3ED;
+    background-color : transparent;
+    text-align : center;
+    padding : 1px;
+    font-size : 1rem;
+    font-style : italic;
+    transition-duration: 0.1s;
+    border : none;
+    outline : none;
+    cursor : pointer;
+    text-decoration : none;
+    transition : text-decoration 0.1s ease-in-out;
+}
+
+.phase-dropdown:hover {
+    text-decoration : underline;
+}
+
+#phase-list {
+    display : none;
+    padding-left : 20px;
+}
+
+#phase-list.shown {
+    display : block;
+}
+
+/* THE FOLLOWING SECTION IS BASED ON: https://www.w3schools.com/css/css_rwd_intro.asp and https://www.w3schools.com/css/css_rwd_mediaqueries.asp*/
+/* MOBILE COMPATIBILITY */
+/*          - this was by far the most painful part of the process */
+
+/* this is my best attempt at compatibility; that is, with only a laptop and an iPhone SE to test on; due to being unable to test on tablets, there may
+   still be incompatibilities */
+
+/* One of the existing incompatibilities is the left menu not disappearing when it overlaps with the main title; according to my research, this can be detected
+   with JavaScript. Thus, the issue will be corrected with the programming done in that unit */
+
+@media only screen and (max-width: 768px) {                 /* cutoff size for tablets and phones as per: https://www.w3schools.com/css/css_rwd_mediaqueries.asp */
+    
+    /* taking care of the left menu */
+    
+    .left-menu {
+        display : none;
+    }
+
+    img {
+        width : 100%;                 /* this should stay within the confines of the parent and not overflow. */
+        height : auto;
+    }
+
+    /* page specific calls */
+
+    .page-title {
+        padding-top : 30px;                 
+        margin-top : 30px;
+        margin-bottom : 30px;                  
+        display : flex;                 /* default orientation is row-wise */
+        flex-direction : column;    
+        align-items : center;               
+        text-align : center;
+        font-size : 0.7rem;
+        line-height : 0.1;
+        color : #8380DC;
+    }
+
+    #index-title {                         /* this overrides the immediately previous block to style the title-itself with a larger font */
+        font-size : 1.0rem;
+        color : #3D39BF;
+        font-weight : 500;                  /* in all the other sections that styled the title this line didn't make a difference */
+        margin-top : 30px;
+    }
+
+    .main-index {
+        margin-left : 0px;
+        padding : 20px;
+        min-height : 100vh;
+        line-height : 1.5;
+    }
+
+    #pentesting-phase-container {
+        font-size : 1rem;
+    }
+
+    .sub-topic-div {
+        font-size : 0.8rem;
+        max-width : 300px;
+    }
+
+    .sub-topic-div p {
+        max-width : 100%;
+        padding : 10px;
+        word-wrap : break-word;
+        overflow-wrap : break-word;
+        text-align : left;
+    }
+
+    .sub-topic-div h2 {
+        text-align : center;
+        max-width : 100%;
+        padding : 10px;
+        word-wrap : break-word;
+        overflow-wrap : break-word;
+    }
+
+    .sub-topic-div pre {
+        white-space : pre-wrap;                         /* phase pages on mobile hinge on this line; the shell commands have to wrap to preserve formatting */
+        word-wrap : break-word;
+        overflow-wrap : break-word;
+        text-align : left;                              /* even with this property, there can be NO indentation left in these pre blocks in the HTML */
+    }
+
+    .sub-topic-div img {
+        max-width : 300px;
+    }
+
+    .sub-topic-list {
+        max-width : 200%;                       /* making sure the dropdown menu is still usable on mobile */
+    }
+
+    .page-title h3,
+    .page-title p {
+        display : none;
+    }
+
+    #code-snippet-div-housing {
+        max-width : 300px;
+    }
+
+    .code-image {
+        max-width : 300px;
+    }
+    
+    .code-snippet-div h2 {                      /* the mobile styling of the code blocks themselves can't be done here as prism.js overrides it */
+        font-size : 1.3rem;
+    }
+
+    .user-input-div textarea {
+        max-width : 300px;
+    }
+
+    .display-processing-results {
+        max-width : 300px;
+    }
+
+    .process-log-button button {
+        color : #000;
+    }
+
+    .password-breach-div {
+        max-width : 250px;
+    }
+
+    .display-call-results {
+        max-width : 300px;
+    }
+
+    #check-user-password {
+        color : #000;
+    }
+
+}
