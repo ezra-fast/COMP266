@@ -176,6 +176,7 @@ the padding is based on:
     justify-content : center;
     padding : 20px;
     line-height : 2.5;
+    margin-left : 100px;
 }
 
 #extra-column-id {
