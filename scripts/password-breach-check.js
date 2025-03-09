@@ -12,6 +12,13 @@ Description:
 
 $( function() {
 
+    $(document).on('keypress', function(e) {
+        console.log('Arrived here!');
+        if (e.which == 13) {
+            alert('You pressed enter!');
+        }
+    })
+
     $('#check-user-password').on('click', function() {
         $('#call-results-heading').text("");                    // resetting the output elements
         $('#call-results').text("");
