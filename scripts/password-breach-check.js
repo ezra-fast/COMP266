@@ -53,8 +53,10 @@ $( function() {
     }
 
     $(document).on('keypress', function(e) {
-        console.log('Enter key pressed. Performing entryPoint routine');
-        entryPoint();
+        if (e.which == 13) {
+            console.log('Enter key pressed. Performing entryPoint routine');
+            entryPoint();
+        }
     })
 
     $('#check-user-password').on('click', function() {
