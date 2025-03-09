@@ -12,14 +12,8 @@ Description:
 
 $( function() {
 
-    $(document).on('keypress', function(e) {
-        console.log('Arrived here!');
-        if (e.which == 13) {
-            alert('You pressed enter!');
-        }
-    })
+    function entryPoint() {
 
-    $('#check-user-password').on('click', function() {
         $('#call-results-heading').text("");                    // resetting the output elements
         $('#call-results').text("");
         var userPassword = $("#user-password").val();           // .text() will not work here
@@ -56,6 +50,14 @@ $( function() {
                 }
             });
         })
+    }
 
+    $(document).on('keypress', function(e) {
+        console.log('Enter key pressed. Performing entryPoint routine');
+        entryPoint();
+    })
+
+    $('#check-user-password').on('click', function() {
+        entryPoint();
     })
 })
